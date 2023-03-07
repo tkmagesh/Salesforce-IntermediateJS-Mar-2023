@@ -41,11 +41,11 @@ JavaScript Language Overview (ES5)
 3. Object Based Language
 4. Functional Language (not a pure functional language)
 
-sum(10,20)
-sum(10, "20")
-sum(10, "20", "abc")
-sum(10,20,30,40,50)
-sum()
+sum(10,20) => 30
+sum(10, "20") => 30
+sum(10, "abc") => 10
+sum(10,20,30,40,50) => 150
+sum() => 0
 sum([10,20,30],[40,50,60])
 sum([10,["20",30]],[40,50,60, "abc"])
 sum(function(){ return 10;}, function(){ return 20;})
@@ -59,3 +59,14 @@ $(function(){
 
 })
 
+
+npm init -y
+npm install --save-dev jest
+
+Implicit Values in a function
+    - this
+    - arguments
+        array like object containing all the argument values passed to the function
+        arguments.length
+        arguments[0]
+        arguments[1]
