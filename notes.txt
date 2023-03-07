@@ -65,9 +65,19 @@ npm init -y
 npm install --save-dev jest
 
 Implicit Values in a function
-    - this
+    - this (invocation context)
+        It does not matter where the function is OR who owns the function. What matters is "how the function is invoked"
+
     - arguments
         array like object containing all the argument values passed to the function
         arguments.length
         arguments[0]
         arguments[1]
+
+Function invocation patterns
+    1. As a method of an object
+        this -> object
+    2. As a function
+        this -> global scope (window in the browser)
+    3. Using the "call" method of the function
+    4. Using the "apply" method of the function

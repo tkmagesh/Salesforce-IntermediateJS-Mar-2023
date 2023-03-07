@@ -1,20 +1,9 @@
-function sum(x,y){
+function sum(){
     function parseArg(n){
-        if (Array.isArray(n)){
-            var result = 0;
-            for (var i = 0; i < n.length; i++){
-                result += parseArg(n[i])
-            }
-            return result
-        }
+        if (Array.isArray(n)) return sum.apply(this, n)
         if (typeof n === 'function') return parseArg(n())
         return isNaN(n) ? 0 : parseInt(n)
     }
-    var result = 0
-    for (var i = 0; i < arguments.length; i++){
-        result += parseArg(arguments[i])
-    }
-    return result;
+    return arguments.length <= 1 ? parseArg(arguments[0]) : parseArg(arguments[0]) + sum([].slice.call(arguments, 1))
 }
-
 module.exports = sum;
