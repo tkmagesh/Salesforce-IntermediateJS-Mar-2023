@@ -1,0 +1,61 @@
+Software Requirements
+    Nodes.js
+    Any Editor (Visual Studio Code)
+
+Schedule:
+    Session - 1 : 90 mins
+    Tea Break   : 20 mins
+    Session - 2 : 90 mins
+    Lunch Break : 60 mins
+    Session - 3 : 90 mins
+    Tea Break   : 20 mins
+    Session - 4 : 90 mins
+
+Methodology:
+    * No powerpoints
+    * 100% code driven class
+
+About You:
+    Name
+    Experience in JS (Frameworks etc)
+    Any specific expectations?
+        Testing
+
+JavaScript Language Overview (ES5)
+    Data Types
+        string
+        number
+        boolean
+        object
+        function
+        undefined
+
+    Constructs
+        var, if else, switch case, for, try catch finally, throw, function
+
+    APIs
+        Array, Object, Function, Math, Regex, Error, setTimeout, setInterval, clearTimeout, clearInterval
+
+1. Loosely typed language
+2. Dynamic Language
+3. Object Based Language
+4. Functional Language (not a pure functional language)
+
+sum(10,20)
+sum(10, "20")
+sum(10, "20", "abc")
+sum(10,20,30,40,50)
+sum()
+sum([10,20,30],[40,50,60])
+sum([10,["20",30]],[40,50,60, "abc"])
+sum(function(){ return 10;}, function(){ return 20;})
+sum(function(){ return [10,["20",30]];}, function(){ return [40,50,60, "abc"]; })
+sum([function(){ return [10,["20",30]];}, function(){ return [40,50,60, "abc"]; }])
+
+$(domNode)
+$([domNode1, domNode2])
+$('selector')
+$(function(){
+
+})
+
