@@ -46,11 +46,12 @@ sum(10, "20") => 30
 sum(10, "abc") => 10
 sum(10,20,30,40,50) => 150
 sum() => 0
-sum([10,20,30],[40,50,60])
-sum([10,["20",30]],[40,50,60, "abc"])
-sum(function(){ return 10;}, function(){ return 20;})
-sum(function(){ return [10,["20",30]];}, function(){ return [40,50,60, "abc"]; })
-sum([function(){ return [10,["20",30]];}, function(){ return [40,50,60, "abc"]; }])
+sum([10,20,30],[40,50,60]) => 210
+sum([10,"20",30],[40,50,"abc"]) => 150
+sum([10,["20",30]],[40,50,60, "abc"]) => 210
+sum(function(){ return 10;}, function(){ return 20;}) => 30
+sum(function(){ return [10,["20",30]];}, function(){ return [40,50,60, "abc"]; }) => 210
+sum([function(){ return [10,["20",30]];}, function(){ return [40,50,60, "abc"]; }]) => 210
 
 $(domNode)
 $([domNode1, domNode2])

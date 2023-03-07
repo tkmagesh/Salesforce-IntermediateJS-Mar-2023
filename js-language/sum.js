@@ -7,6 +7,7 @@ function sum(x,y){
             }
             return result
         }
+        if (typeof n === 'function') return parseArg(n())
         return isNaN(n) ? 0 : parseInt(n)
     }
     var result = 0

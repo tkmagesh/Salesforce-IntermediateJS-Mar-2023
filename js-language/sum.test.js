@@ -48,3 +48,25 @@ test('sum([10,"20",30],[40,50,"abc"]) => 150', function(){
     var actualResult = sum([10, "20", 30], [40, 50, "abc"])
     expect(actualResult).toBe(expectedResult)
 })
+
+test('sum([10,["20",30]],[40,50,60, "abc"]) => 210', function(){
+    var expectedResult = 210
+    var actualResult = sum([10, ["20", 30]], [40, 50, 60, "abc"])
+    expect(actualResult).toBe(expectedResult)
+})
+
+test('sum(function () { return 10; }, function () { return 20; }) => 30', function(){
+    var expectedResult = 30
+    var actualResult = sum(function () { return 10; }, function () { return 20; })
+    expect(actualResult).toBe(expectedResult)
+})
+test('sum(function () { return [10, ["20", 30]]; }, function () { return [40, 50, 60, "abc"]; }) => 210', function(){
+    var expectedResult = 210
+    var actualResult = sum(function () { return [10, ["20", 30]]; }, function () { return [40, 50, 60, "abc"]; })
+    expect(actualResult).toBe(expectedResult)
+})
+test('sum([function () { return [10, ["20", 30]]; }, function () { return [40, 50, 60, "abc"]; }]) => 210', function(){
+    var expectedResult = 210
+    var actualResult = sum([function () { return [10, ["20", 30]]; }, function () { return [40, 50, 60, "abc"]; }])
+    expect(actualResult).toBe(expectedResult)
+})
