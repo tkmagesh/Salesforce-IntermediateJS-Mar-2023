@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Click Tracker</title>
     <script>
-        (function app(){
-            var count = 0
-            function onBtnTrackClick(){
-                count++
+        (function app(){ // step - 1
+            var count = 0 // step - 2
+            function onBtnTrackClick(){ // step - 3
+                count++ // step - 4
                 document.getElementById('divCounter').innerText = count
             }
             function onDocumentLoad(){
                 var btnTrack = document.getElementById('btnTrack');
-                btnTrack.addEventListener('click', onBtnTrackClick)
+                btnTrack.addEventListener('click', onBtnTrackClick) // step - 5
             }
             window.addEventListener('load', onDocumentLoad)
         })()

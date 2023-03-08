@@ -159,3 +159,30 @@ Memoization
 Closures
     Create a html page with a button[Track] and a div
     Track the number of times the button is clicked and display the count in the div
+
+
+    Assignment
+        (NO HTML, NO BUTTON, NO EVENT HANDLERS)
+        Create an object and assign it to a variable 'spinner'
+            var spinner = /* ? */
+        The spinner object must have the following methods
+            - up()
+            - down()
+        The following is the behavior of the above methods
+            spinner.up() //=> 1
+            spinner.up() //=> 2
+            spinner.up() //=> 3
+
+            spinner.down() //=> 2
+            spinner.down() //=> 1
+            spinner.down() //=> 0
+            spinner.down() //=> -1
+        IMPORTANT:
+            There should NO WAY by which the behavior of the spinner object can be influenced from outside
+            The following SHOULD NOT be possible
+            =======
+                spinner.count = 10000
+                spinner.up() //=> SHOULD NOT RETURN 10001
+            =======
+                window.count = 10000
+                spinner.up() //=> SHOULD NOT RETURN 10001
