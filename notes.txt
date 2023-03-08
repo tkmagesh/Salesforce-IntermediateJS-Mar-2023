@@ -81,6 +81,7 @@ Function invocation patterns
         this -> global scope (window in the browser)
     3. Using the "call" method of the function
     4. Using the "apply" method of the function
+    5. Immediately Invoked Function Expression (IIFE)
 
 
 Functional Language
@@ -155,4 +156,6 @@ Memoization
             return isPrime.cache[no]
         }
 
-        
+Closures
+    Create a html page with a button[Track] and a div
+    Track the number of times the button is clicked and display the count in the div
