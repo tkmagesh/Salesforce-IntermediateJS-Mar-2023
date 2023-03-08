@@ -81,3 +81,20 @@ Function invocation patterns
         this -> global scope (window in the browser)
     3. Using the "call" method of the function
     4. Using the "apply" method of the function
+
+
+Functional Language
+    Functions are first class citizens (treat functions like data)
+        1. Create functions like object
+        2. Functions can have attributes
+        3. Functions can have methods
+        4. Functions can be passed as arguments
+        5. Functions can be returned as return values from other functions
+
+z = x || y
+    if x is truthy, return x
+        else return y
+
+If the boolean equivalent of a value is true, then the value is "truthy"
+
+Falsy = 0, '', null, undefined, NaN, false
