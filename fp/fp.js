@@ -41,7 +41,31 @@ usecase('Sort', function(){
         console.table(products)
     })
 
+    function sort(list, comparer) {
+        var comparerFn;
+        if (typeof comparer === 'function') {
+            comparerFn = comparer;
+        }
+        if (typeof comparer === 'string'){
+            comparerFn = function(p1, p2){
+                if (p1[comparer] < p2[comparer]) return -1
+                if (p1[comparer] > p2[comparer]) return 1
+                return 0
+            }
+        }
+        for (var i = 0; i < list.length - 1; i++) {
+            for (var j = i + 1; j < list.length; j++) {
+                if (comparerFn(list[i], list[j]) > 0) {
+                    var temp = list[i]
+                    list[i] = list[j]
+                    list[j] = temp
+                }
+            }
+        }
+    }
+
     usecase('Any list by any attribute', function(){
+        /* 
         function sortByAttrName(list, attrName) {
             for (var i = 0; i < list.length - 1; i++) {
                 for (var j = i + 1; j < list.length; j++) {
@@ -52,18 +76,20 @@ usecase('Sort', function(){
                     }
                 }
             }
-        }
+        } 
+        */
         usecase('Products by name', function(){
-            sortByAttrName(products, 'name')
+            sort(products, 'name')
             console.table(products)
         }) 
         usecase('Products by cost', function () {
-            sortByAttrName(products, 'cost')
+            sort(products, 'cost')
             console.table(products)
         }) 
     })
 
     usecase('Any list by any comparer', function () {
+        /* 
         function sortByComparer(list, comparerFn) {
             for (var i = 0; i < list.length - 1; i++) {
                 for (var j = i + 1; j < list.length; j++) {
@@ -74,7 +100,8 @@ usecase('Sort', function(){
                     }
                 }
             }
-        }
+        } 
+        */
         usecase('Products by value (cost * units)', function(){
             var productComparerByValue = function(p1, p2){
                 var p1Value = p1.cost * p1.units,
@@ -84,14 +111,14 @@ usecase('Sort', function(){
                 return 0
             }
             usecase('By Ascending', function(){
-                sortByComparer(products, productComparerByValue)
+                sort(products, productComparerByValue)
                 console.table(products)
             })
             usecase('By Descending', function(){
                 var productComparerByValueDesc = function(p1, p2){
                     return productComparerByValue(p1, p2) * -1
                 }
-                sortByComparer(products, productComparerByValueDesc)
+                sort(products, productComparerByValueDesc)
                 console.table(products)
             })
         })
@@ -100,15 +127,26 @@ usecase('Sort', function(){
    
 })
 
-/* 
+
 usecase('Filter', function(){
-    usecase('Costly Products', function(){
-        // filter
+    usecase('Costly Products (cost > 50)', function(){
+        function filterCostlyProducts(){
+
+        }
         console.table(products)
     })
-    usecase('Stationary Products', function(){
-        // filter
-        console.table(products)
+    usecase('Any list by any criteria', function(){
+        function filter(/*  */){
+            
+        }
+        usecase('Stationary Products', function(){
+            // filter
+            console.table(products)
+        })
+        usecase('Under stocked Products (units < 50)', function () {
+            // filter
+            console.table(products)
+        })
     })
 })
- */
+
