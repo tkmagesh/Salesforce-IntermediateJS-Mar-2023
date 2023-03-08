@@ -82,6 +82,10 @@ Function invocation patterns
     3. Using the "call" method of the function
     4. Using the "apply" method of the function
     5. Immediately Invoked Function Expression (IIFE)
+    6. Invoked using the "new" keyword (Constructor functions)
+        this -> new object
+        this -> returned by default
+        Constructor Function names start with Uppercase (convention)
 
 
 Functional Language
@@ -186,3 +190,11 @@ Closures
             =======
                 window.count = 10000
                 spinner.up() //=> SHOULD NOT RETURN 10001
+
+
+Assignment:
+    Create the "Spinner" as a Constructor function
+
+    var spinner = new Spinner()
+    spinner.up()
+    spinner.down()
