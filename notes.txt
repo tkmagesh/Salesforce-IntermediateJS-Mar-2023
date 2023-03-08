@@ -98,3 +98,61 @@ z = x || y
 If the boolean equivalent of a value is true, then the value is "truthy"
 
 Falsy = 0, '', null, undefined, NaN, false
+
+Memoization
+    Technique used to write functions that can remember its results
+
+    function isPrime(no){
+        console.log('processing ', no)
+        for (var i = 2; i <= (no/2); i++){
+            if (no % i === 0){
+                return false
+            }
+        }
+        return true
+    }
+
+    Pure function
+        A function that has NO side effects
+        The functions output for the given input never changes
+        The invocation of a function should be able to be replaced with the result of the function without changing the outcome.
+
+        fn(x) => z
+        fn(x1) => z1
+
+    
+    Impure Functions
+        =================
+        var z = 100
+        function add(x,y){ // depends on data that it not explicitly given as input
+            return x + y + z
+        }
+
+        ===================
+        function add(x,y){ // communicating to external resources (console)
+            console.log('processing ', x , ' and ', y)
+            return x + y
+        }
+        function addClient(){
+            var result = add(100, 200)
+            console.log('result : ', result);
+        }
+
+        ===================
+        
+        Memoized IsPrime function
+        function isPrime(no){
+            isPrime['cache'] = isPrime['cache'] || {}
+            if (isPrime.cache.hasOwnProperty(no)) return isPrime.cache[no];
+            console.log('processing ', no)
+            isPrime.cache[no] = true
+            for (var i = 2; i <= (no/2); i++){
+                if (no % i === 0){
+                    isPrime.cache[no] = false
+                    break
+                }
+            }
+            return isPrime.cache[no]
+        }
+
+        
