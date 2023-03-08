@@ -13,6 +13,14 @@ function usecase(title, fn){
     console.groupEnd()
 }
 
+function printGroup(groupObj){
+    for (var attributeName in groupObj){
+        usecase('Key - [' + attributeName + ']', function(){
+            console.table(groupObj[attributeName])
+        })
+    }
+}
+
 /* 
 sort (bubble sort)
 filter
@@ -131,21 +139,89 @@ usecase('Sort', function(){
 usecase('Filter', function(){
     usecase('Costly Products (cost > 50)', function(){
         function filterCostlyProducts(){
-
+            var result = []
+            for (var i = 0; i < products.length; i++){
+                if (products[i].cost > 50){
+                    result.push(products[i])
+                }
+            }
+            return result
         }
-        console.table(products)
+        var costlyProducts = filterCostlyProducts()
+        console.table(costlyProducts)
     })
     usecase('Any list by any criteria', function(){
-        function filter(/*  */){
-            
+        function filter(list, predicate){
+            var result = []
+            for (var i = 0; i < list.length; i++) {
+                if (predicate(list[i])) {
+                    result.push(list[i])
+                }
+            }
+            return result
         }
         usecase('Stationary Products', function(){
-            // filter
-            console.table(products)
+            var stationaryProductPredicate = function(product){
+                return product.category === 'stationary'
+            }
+            var stationaryProducts = filter(products, stationaryProductPredicate)
+            console.table(stationaryProducts)
         })
         usecase('Under stocked Products (units < 50)', function () {
-            // filter
-            console.table(products)
+            var understockedProductPredicate = function(product){
+                return product.units < 50
+            }
+            var understockedProducts = filter(products, understockedProductPredicate)
+            console.table(understockedProducts)
+        })
+    })
+})
+
+usecase("GroupBy", function(){
+    usecase("grouping products by category", function(){
+        function groupProductsByCategory(){
+            var result = {}
+            for (var i = 0; i < products.length; i++){
+                var item = products[i]
+                var key = item.category
+                result[key] = result[key] || []
+                result[key].push(item)
+            }
+            return result
+        }
+        var productsByCategory = groupProductsByCategory()
+        printGroup(productsByCategory)
+    })
+    usecase("any list by any key", function(){
+        function groupBy(list, key) {
+            var result = {}
+            var keySelectorFn;
+            if (typeof key === 'string'){
+                keySelectorFn = function(item){
+                    return item[key]
+                }
+            }
+            if (typeof key === 'function'){
+                keySelectorFn = key
+            }
+            for (var i = 0; i < list.length; i++) {
+                var item = list[i]
+                var keyValue = keySelectorFn(item)
+                result[keyValue] = result[keyValue] || []
+                result[keyValue].push(item)
+            }
+            return result
+        }
+        usecase("products by cost", function(){
+            var costKeySelector = function(product){
+                return product.cost > 50 ? 'costly' : 'affordable'
+            }
+            var productsByCost = groupBy(products, costKeySelector)
+            printGroup(productsByCost)
+        })
+        usecase("products by category [string]", function () {
+            var productsByCost = groupBy(products, "category")
+            printGroup(productsByCost)
         })
     })
 })
