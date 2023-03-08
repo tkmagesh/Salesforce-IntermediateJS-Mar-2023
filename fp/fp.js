@@ -160,6 +160,11 @@ usecase('Filter', function(){
             }
             return result
         }
+        function negate(predicateFn){
+            return function(){
+                return !predicateFn.apply(this, arguments)
+            }
+        }
         usecase('Stationary Products', function(){
             var stationaryProductPredicate = function(product){
                 return product.category === 'stationary'
@@ -167,12 +172,43 @@ usecase('Filter', function(){
             var stationaryProducts = filter(products, stationaryProductPredicate)
             console.table(stationaryProducts)
         })
-        usecase('Under stocked Products (units < 50)', function () {
-            var understockedProductPredicate = function(product){
-                return product.units < 50
+        usecase("Products by units", function(){
+            var understockedProductPredicate = function (product) {
+                return product.units < 80
             }
-            var understockedProducts = filter(products, understockedProductPredicate)
-            console.table(understockedProducts)
+            usecase('Under stocked Products (units < 80)', function () {
+                var understockedProducts = filter(products, understockedProductPredicate)
+                console.table(understockedProducts)
+            })
+            usecase("well stocked Products", function(){
+                /* 
+                var wellstockedProductPredicate = function(product){
+                    return product.units >= 40
+                } 
+                */
+                /* 
+                var wellstockedProductPredicate = function(product){
+                        return !understockedProductPredicate(product)
+                } 
+                */
+                var wellstockedProductPredicate = negate(understockedProductPredicate)
+                var wellstockedProducts = filter(products, wellstockedProductPredicate)
+                console.table(wellstockedProducts)
+            })
+        })
+        usecase("Products by cost", function () {
+            var costlyProductPredicate = function (product) {
+                return product.cost > 50
+            }
+            usecase('costly products (cost > 50)', function () {
+                var costlyProducts = filter(products, costlyProductPredicate)
+                console.table(costlyProducts)
+            })
+            usecase("affordable products (!costly products)", function () {
+                var affordableProductPredicate = negate(costlyProductPredicate)
+                var affordableProducts = filter(products, affordableProductPredicate)
+                console.table(affordableProducts)
+            })
         })
     })
 })
