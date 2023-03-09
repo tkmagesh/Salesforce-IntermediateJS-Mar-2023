@@ -38,9 +38,12 @@ usecase('Sort', function(){
             for (var i = 0; i < products.length-1; i++){
                 for (var j = i + 1; j < products.length; j++){
                     if (products[i].id > products[j].id){
+                        /* 
                         var temp = products[i]
                         products[i] = products[j]
-                        products[j] = temp
+                        products[j] = temp 
+                        */
+                        [products[i], products[j]] = [products[j], products[i]]
                     }
                 }
             }

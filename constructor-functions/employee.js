@@ -4,4 +4,8 @@ function Employee(id, name , salary){
     this.name = name
     this.salary = salary
     // this -> returned by default
+
+    this.print = function(){
+        console.log(this.id, this.name, this.salary)
+    }
 }

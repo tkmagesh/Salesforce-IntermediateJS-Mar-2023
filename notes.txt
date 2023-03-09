@@ -199,3 +199,9 @@ Assignment:
     var spinner = new Spinner()
     spinner.up()
     spinner.down()
+
+CoffeeScript
+TypeScript = JavaScript + Type Safety
+ES6 (ES2015 / ESNext)
+    Transpilers (babel)
+        ES6 -> ES5
