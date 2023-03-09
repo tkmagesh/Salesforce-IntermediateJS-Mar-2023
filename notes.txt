@@ -163,7 +163,8 @@ Memoization
 Closures
     Create a html page with a button[Track] and a div
     Track the number of times the button is clicked and display the count in the div
-
+    IMPORTANT:
+        Closures are costly (maintaining private state in JS is costly)
 
     Assignment
         (NO HTML, NO BUTTON, NO EVENT HANDLERS)
