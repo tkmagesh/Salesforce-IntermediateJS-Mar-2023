@@ -16,19 +16,21 @@
     window['addSyncClient'] = addSyncClient
 
     // async
-    function addAsync(x, y) {
+    function addAsync(x, y, callback) {
         console.log(`   [@service] processing ${x} and ${y}`)
         setTimeout(() => {
             const result = x + y
             console.log(`   [@service] returning result`)
-            return result
+            callback(result)
         }, 5000)
     }
 
     function addAsyncClient(x, y) {
         console.log(`[@client] invoking the service`)
-        const result = addAsync(x, y)
-        console.log(`[@client] result = ${result}`)
+        addAsync(x, y, function(result){
+            console.log(`[@client] result = ${result}`)
+        })
+        
     }
 
     window['addAsyncClient'] = addAsyncClient
