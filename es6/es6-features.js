@@ -1,3 +1,5 @@
+// https://es6-features.org
+
 /* 
     1. let
         (var -> NOT block scoped)
@@ -172,3 +174,77 @@ class Employee {
         console.log(`id = ${this.#id}, name = ${this.#name}, salary = ${this.#salary}`)
     }
 }
+
+class Employee {
+    #id = 0
+    #name = ''
+    #salary = 0
+
+    get name() {
+        console.log('getter:name triggered')
+        return this.#name
+    }
+
+    set name(val) {
+        console.log('setter:name triggered')
+        if (val === '')
+            throw new Error('invalid name')
+        this.#name = val
+    }
+
+    get id() {
+        return this.#id
+    }
+
+    get salary() {
+        return this.#salary
+    }
+
+    constructor(id, name, salary) {
+        this.#id = id
+        this.#name = name
+        this.#salary = salary
+    }
+
+    display() {
+        console.log(`id = ${this.#id}, name = ${this.#name}, salary = ${this.#salary}`)
+    }
+}
+
+class FulltimeEmployee extends Employee {
+    benefits = ''
+    constructor(id, name, salary, benefits) {
+        super(id, name, salary)
+        this.benefits = benefits
+    }
+    display() {
+        console.log(`id = ${this.id}, name = ${this.name}, salary = ${this.salary}, benefits = ${this.benefits}`)
+    }
+}
+
+
+class Person {
+    #firstName = ''
+    #lastName = ''
+
+    set Name(fullname) {
+        const [firstName, lastName] = fullname.split(',')
+        this.#firstName = firstName
+        this.#lastName = lastName
+    }
+
+    get firstName() {
+        return this.#firstName
+    }
+
+    get lastName() {
+        return this.#lastName
+    }
+}
+
+const p = new Person()
+p.Name = 'Magesh,Kuppan'
+p.firstName
+// 'Magesh'
+p.lastName
+// 'Kuppan'
