@@ -7,7 +7,7 @@ var products = [
     { id: 7, name: 'Mouse', cost: 100, units: 20, category: 'electronics' }
 ];
 
-function usecase(title, fn){
+const usecase = (title, fn) => {
     console.group(title)
     fn()
     console.groupEnd()
@@ -112,11 +112,18 @@ usecase('Filter', function(){
     usecase('Costly Products (cost > 50)', function(){
         function filterCostlyProducts(){
             let result = []
+            /* 
             for (let i = 0; i < products.length; i++){
                 if (products[i].cost > 50){
                     result.push(products[i])
                 }
-            }
+            } 
+            */
+           for (let product of products){
+                if (product.cost > 50){
+                    result.push(product)
+                }
+           }
             return result
         }
         let costlyProducts = filterCostlyProducts()

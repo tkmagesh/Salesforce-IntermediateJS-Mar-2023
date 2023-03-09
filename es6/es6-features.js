@@ -10,6 +10,9 @@
     8. Spread operator (Object)
     9. default arguments
     10. Arrow functions
+    11. template strings
+    12. iterator (for of)
+    13. class
 */
 
 // Array Destructuring
@@ -106,3 +109,66 @@ var add = (x,y) => {
 }
 */
 var add = (x, y) => x + y
+
+// 11. template strings
+let x = 100, y = 200
+let s2 = `sum of ${x} and ${y} is ${x + y}`
+
+let s3 = `sum of 
+${x} and ${y} 
+is ${x + y}`
+
+// 12. for-of
+let nos = [3, 1, 4, 2, 5]
+for (let no of nos)
+    console.log(no)
+
+// classes
+class Employee {
+    id = 0
+    name = ''
+    salary = 0
+
+    constructor(id, name, salary) {
+        this.id = id
+        this.name = name
+        this.salary = salary
+    }
+
+    display() {
+        console.log(`id = ${this.id}, name = ${this.name}, salary = ${this.salary}`)
+    }
+}
+
+// private fields, setters & getters
+class Employee {
+    #id = 0
+    #name = ''
+    #salary = 0
+
+    get name() {
+        console.log('getter:name triggered')
+        return this.#name
+    }
+
+    set name(val) {
+        console.log('setter:name triggered')
+        if (val === '')
+            throw new Error('invalid name')
+        this.#name = val
+    }
+
+    get id() {
+        return this.#id
+    }
+
+    constructor(id, name, salary) {
+        this.#id = id
+        this.#name = name
+        this.#salary = salary
+    }
+
+    display() {
+        console.log(`id = ${this.#id}, name = ${this.#name}, salary = ${this.#salary}`)
+    }
+}
