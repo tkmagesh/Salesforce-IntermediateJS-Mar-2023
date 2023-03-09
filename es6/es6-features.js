@@ -8,6 +8,8 @@
     6. Object destructuring
     7. Rest operator (Object)
     8. Spread operator (Object)
+    9. default arguments
+    10. Arrow functions
 */
 
 // Array Destructuring
@@ -72,3 +74,35 @@ var emp = {
     salary: 10000
 }
 var newEmp = { ...emp, city: 'Bangalore' }
+
+// 9. Default arguments
+function add(x = 10, y = 20) {
+    return x + y
+}
+add()
+// 30
+add(100)
+// 120
+add(undefined, 200)
+// 210
+add(100, 200)
+// 300
+
+// 10. Arrow functions
+/*
+// function statement
+function add(x,y){
+    return x + y
+}
+
+// function expression
+var add = function(x,y){
+    return x + y
+}
+
+// arrow function
+var add = (x,y) => {
+    return x + y
+}
+*/
+var add = (x, y) => x + y
