@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Workers</title>
+    <script>
+        (() => {
+            const worker = new Worker('do-work.js')
+
+            worker.addEventListener('message', evt => {
+                if (evt.data.type === 'done'){
+                    displayMessage('Work Completed')
+                }
+                if (evt.data.type === 'progress'){
+                    document.getElementById('workProgress').value = evt.data.percentCompleted;
+                }
+            });
+
+            function onBtnDoWorkClick(){
+                displayMessage('Work Started')
+                worker.postMessage({ type : 'start'})
+            }
+            function displayMessage(msg){
+                document.getElementById('divMessages').innerHTML += msg + '<br/>'
+            }
+            function onDocumentLoad(){
+                var btnDoWork = document.getElementById('btnDoWork')
+                btnDoWork.addEventListener('click', onBtnDoWorkClick)
+            }
+            window.addEventListener('load', onDocumentLoad)
+        })()
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="">
+    <button id="btnDoWork">Do Work</button>
+    <progress id="workProgress" min="0" max="100" value="0"></progress>
+    <div id="divMessages">
+
+    </div>
+</body>
+</html>

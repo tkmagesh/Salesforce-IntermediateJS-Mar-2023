@@ -205,3 +205,14 @@ TypeScript = JavaScript + Type Safety
 ES6 (ES2015 / ESNext)
     Transpilers (babel)
         ES6 -> ES5
+
+Async
+    1. UI Events
+    2. Timer Events (setTimeout, setInterval)
+    3. AJAX
+    4. Server Sent Events
+    5. Web Sockets
+
+Web Workers
+    to run a web server
+        npx http-server -c-1
