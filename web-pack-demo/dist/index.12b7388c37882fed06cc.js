@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log("app invoked"),console.log(300),console.log(2e4)})();

@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const process = require('process')
-
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = function (env) {
     return {
@@ -18,10 +18,8 @@ module.exports = function (env) {
             filename: 'index.[contenthash].js'
         },
         plugins: [
-            new HtmlWebpackPlugin()/* ,
-            new webpack.EnvironmentPlugin({
-                "NODE_ENV": "production"
-            }) */
+            new HtmlWebpackPlugin(),
+            new CleanWebpackPlugin()
         ],
         mode: env.production ? 'production' : 'development'
     }
