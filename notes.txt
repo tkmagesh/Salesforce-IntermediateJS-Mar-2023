@@ -216,3 +216,17 @@ Async
 Web Workers
     to run a web server
         npx http-server -c-1
+
+Web Sockets
+
+Webpack
+    Web App Deployment Preparation
+        1. Minify JS files
+        2. Uglify JS files
+        3. Bundle JS files
+        4. Version JS files
+        5. Minify CSS files
+        6. Bundle CSS files
+        7. Version CSS files
+        8. Upate the index.html file with references of the newly created files
+
